@@ -1,0 +1,92 @@
+.landing-wrapper{
+    width: 100vw;
+    height: 100vh;
+}
+
+.landing-background {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+}
+
+.landing-content-wrapper {
+    width: 40vw;
+    height: 100vh;
+    padding-left: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.landing-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    color: #ECE8E1;
+    border-bottom: 0.3vh solid #FF4655;
+}
+
+.landing-subtitle {
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 1.6rem;
+    margin-right:-1.6rem;
+}
+
+.landing-title {
+    font-weight: 900;
+    font-size: 6rem;
+    letter-spacing: 0.18rem;
+    margin-right:-0.18rem;
+    margin: 0;
+}
+
+.landing-menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 20vh;
+    padding: 1vh 0;
+}
+
+.menu-options-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dropdown-menu {
+    width: 19vw;
+    height: 5vh;
+    background-color: #ECE8E1;
+    color: #0F1923;
+    border: #ECE8E1;
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.menu-option {
+    padding: 1vh 0;
+    font-size: 1.5rem;
+    color: #0F1923;
+}
+
+.start-button{
+    width: 19vw;
+    padding: 2vh 0;
+    background: #FF4655;
+    color: #ECE8E1;
+    text-align: center;
+    letter-spacing: 0.18rem;
+}
+
+.start-button:hover {
+    background: #0F1923;
+}
+
+.start-button-text {
+    font-size: 2rem;
+}

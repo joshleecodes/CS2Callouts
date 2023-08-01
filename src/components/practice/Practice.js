@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { random } from 'lodash';
-import './App.css';
 
 //img imports
-import controlDefault from '../imgs/controlDefault.png';
-import controlGarden from '../imgs/controlGarden.png';
-import controlHeaven from '../imgs/controlHeaven.png';
-import controlHell from '../imgs/controlHell.png';
-import controlLane from '../imgs/controlLane.png';
-import controlSandwich from '../imgs/controlSandwich.png';
+import controlDefault from '../../assets/controlDefault.png';
+import controlGarden from '../../assets/controlGarden.png';
+import controlHeaven from '../../assets/controlHeaven.png';
+import controlHell from '../../assets/controlHell.png';
+import controlLane from '../../assets/controlLane.png';
+import controlSandwich from '../../assets/controlSandwich.png';
 
 
 const App = () => {
