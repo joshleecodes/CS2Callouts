@@ -1,13 +1,21 @@
 import React from 'react';
 
+//component imports
+import Dropdown from '../partials/dropdown/Dropdown';
 
 //asset imports
 import Background from '../../assets/media/Background.png'
+import Vitality from '../../assets/media/vitality-logo.svg';
+import Valorant from '../../assets/media/valorant-logo.svg';
 
 
 export default () => (
     <div className='landing-wrapper'>
         <img className='landing-background' src={Background} />
+        <div className='logo-wrapper'>
+                <img className='valorant-logo landing-logo' src={Valorant} />
+                <img className='vitality-logo landing-logo' src={Vitality} />
+        </div>
         <div className='landing-content-wrapper'> 
             <div className='landing-title-wrapper'>
                 <h2 className='landing-subtitle'>VALORANT // TRAINING_TOOL</h2>
@@ -15,22 +23,13 @@ export default () => (
             </div>
             <div className='landing-menu-wrapper'>
                 <div className='menu-options-wrapper'>
-                    <select className='map-select dropdown-menu'>
-                        <option value="random">RANDOM</option>
-                        <option value="acent">ASCENT</option>
-                    </select>
-                    <select className='location-select dropdown-menu'>
-                        <option className='menu-option' value="location-1">LOCATION ONE</option>
-                        <option className='menu-option' value="location-2">LOCATION TWO</option>
-                        <option className='menu-option' value="location-3">LOCATION THREE</option>
-                    </select>
+                    <Dropdown/>
+                    <Dropdown/>
                 </div>
                 <a className="start-button">
                     <p className='start-button-text'>START PRACTICE</p>
                 </a>
             </div>
         </div>
-        
     </div>
-
 );

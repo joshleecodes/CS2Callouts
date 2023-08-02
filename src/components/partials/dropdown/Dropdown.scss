@@ -1,0 +1,26 @@
+.dropdown-wrapper {
+    width: 19vw;
+    padding: 0 2vw 1vh 0;
+}
+
+.dropdown-menu {
+    width: 19vw;
+    height: 5vh;
+    background-color: #ECE8E1;
+    color: #0F1923;
+    border: #ECE8E1;
+    font-size: 1rem;
+    letter-spacing: 0.3rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.menu-option {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    
+}
