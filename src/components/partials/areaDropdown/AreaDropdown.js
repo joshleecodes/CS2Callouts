@@ -10,7 +10,7 @@ export default class AreaDropdownMenu extends React.Component {
   render() {
     return (
       <div className='dropdown-wrapper'>
-        <Select options={this.props.options} 
+        <Select id='area-dropdown' options={this.props.options} 
           placeholder = "SELECT AREA"
   
           styles={{

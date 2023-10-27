@@ -18,7 +18,6 @@ const options = [
   }
 
   sendMapData(e) {
-    console.log(e.label);
     this.props.mapSelectionCallBack(e.label);
   }
 

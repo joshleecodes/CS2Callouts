@@ -5,7 +5,6 @@ import './index.scss';
 
 //component imports
 import Landing from './components/landing/Landing';
-import Practice from './components/practice/Practice';
 
 //font imports
 import "@fontsource/lato/900.css";
@@ -13,7 +12,5 @@ import "@fontsource/lato/400.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
     <Landing />
-
 );
