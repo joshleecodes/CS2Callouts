@@ -86,7 +86,7 @@ export default class Practice extends React.Component {
   render() {
     return(
       <div>
-        <img src = {this.state.controlImage}/>
+        <img id='displayImage' src = {this.state.controlImage}/>
         {console.log(this.state.imageSet)}
       </div>
     )

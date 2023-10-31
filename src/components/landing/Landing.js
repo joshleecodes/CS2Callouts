@@ -5,7 +5,6 @@ import Menu from '../menu/Menu';
 import Practice from '../practice/Practice';
 
 
-
 export default class Landing extends React.Component {
     constructor(){
         super();
@@ -13,27 +12,22 @@ export default class Landing extends React.Component {
             showMenu: "true",
             mapImageSet: [],
             mapSelection: '',
-            areaSelection: ''
+            areaSelection: '',
+            countSelection: 0
         }
         this.displayController = this.displayController.bind(this);
-        //this.serveImageSet = this.serveImageSet.bind(this);
     }
 
-    displayController = (map, area) => {
+    displayController = (map, area, count) => {
         this.setState({mapSelection: map});
         this.setState({areaSelection: area});
+        this.setState({countSelection: count})
         this.setState({showMenu: false});
-        //this.serveImageSet();
     }
-
-    // serveImageSet = () => {
-    //     //take map/area and produce image set for Practice component
-    //     console.log(this.state.mapSelection, this.state.areaSelection);
-    // }
 
     render() {
         return (
-            this.state.showMenu == "true" ? <Menu startSelectionCallBack = {this.displayController}/> : <Practice map = {this.state.mapSelection} area = {this.state.areaSelection} />
+            this.state.showMenu == "true" ? <Menu startSelectionCallBack = {this.displayController}/> : <Practice map = {this.state.mapSelection} area = {this.state.areaSelection} count = {this.state.countSelection}/>
         )    
     }
 }

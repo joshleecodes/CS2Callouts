@@ -24,7 +24,7 @@ export default class AreaDropdownMenu extends React.Component {
           styles={{
             control: (baseStyles) => ({
               ...baseStyles,
-              width: '19vw',
+              width: '12vw',
               border: 0,
               boxShadow: 'none',
               backgroundColor: '#ECE8E1',

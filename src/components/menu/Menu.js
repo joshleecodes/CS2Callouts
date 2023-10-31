@@ -3,6 +3,7 @@ import React from 'react';
 //component imports
 import MapDropdown from '../partials/mapDropdown/MapDropdown';
 import AreaDropdown from '../partials/areaDropdown/AreaDropdown';
+import CountDropdown from '../partials/countDropdown/CountDropdown';
 
 //asset imports
 import Background from '../../assets/media/Background.png'
@@ -14,22 +15,28 @@ export default class Menu extends React.Component {
     constructor(){
         super();
         this.state = {
-            mapSelection: 'MENU INITIAL',
-            areaSelection: 'MENU INITIAL',
+            mapSelection: 'EMPTY MENU',
+            areaSelection: 'EMPTY MENU',
+            countSelection: 0
         }
         this.updateMapSelection = this.updateMapSelection.bind(this);
         this.updateAreaSelection = this.updateAreaSelection.bind(this);
+        this.updateCountSelection = this.updateCountSelection.bind(this);
         this.serveAreaOptions = this.serveAreaOptions.bind(this);
         this.sendStartData = this.sendStartData.bind(this);
     }
 
     updateMapSelection = (map) => {
-        this.setState({mapSelection: map})
+        this.setState({mapSelection: map});
     };
 
     updateAreaSelection = (area) => {
-        this.setState({areaSelection: area})
+        this.setState({areaSelection: area});
     };
+
+    updateCountSelection = (count) => {
+        this.setState({countSelection: count});
+    }
 
     serveAreaOptions = () => {
         switch(this.state.mapSelection){
@@ -63,7 +70,7 @@ export default class Menu extends React.Component {
     }
 
     sendStartData = () => {
-        this.props.startSelectionCallBack(this.state.mapSelection, this.state.areaSelection);
+        this.props.startSelectionCallBack(this.state.mapSelection, this.state.areaSelection, this.state.countSelection);
     }
 
     render() {
@@ -84,6 +91,7 @@ export default class Menu extends React.Component {
                     <div className='menu-options-wrapper'>
                         <MapDropdown mapSelectionCallBack = {this.updateMapSelection}/>
                         <AreaDropdown options={this.serveAreaOptions()} areaSelectionCallBack = {this.updateAreaSelection}/>
+                        <CountDropdown countSelectionCallBack = {this.updateCountSelection}/>
                     </div>
                     <a className="start-button">
                         <p className='start-button-text' onClick={this.sendStartData}>START PRACTICE</p>

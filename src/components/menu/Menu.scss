@@ -64,18 +64,18 @@
 }
 
 
-
 //Drop down menu styling
 .menu-options-wrapper{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 
 //start button styling
 .start-button{
-    width: 19vw;
-    padding: 2vh 0;
+    width: inherit;
+    padding: 1vh 1vw;
     background: $red;
     color: $off-white;
     text-align: center;
@@ -88,4 +88,5 @@
 
 .start-button-text {
     font-size: 1.5rem;
+    user-select: none;
 }

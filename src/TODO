@@ -1,3 +1,12 @@
-- START PRACTICE BUTTON CURSOR hover
-- File ascent photos
-- drop down menu styling
+- Implement Image change on click
+    - Start with control Image
+    - show call out image on random interval
+    - click to trigger reset to default
+    - repeat until count is met
+    - show practice feedback overlay
+
+- Implement speech API
+    - swap out click trigger to speech input matching callout
+    - record feedback data
+
+- Implement Feedback overlay
