@@ -15,7 +15,7 @@ const options = [
     constructor(){
       super();
       this.sendMapData = this.sendMapData.bind(this);
-  }
+    }
 
   sendMapData(e) {
     this.props.mapSelectionCallBack(e.label);

@@ -4,14 +4,22 @@ import Select from 'react-select'
 
 
 export default class AreaDropdownMenu extends React.Component { 
+  constructor(){
+    super();
+    this.sendAreaData = this.sendAreaData.bind(this);
+  }
   
-  
+  sendAreaData(e) {
+    this.props.areaSelectionCallBack(e.label);
+  }
   
   render() {
     return (
       <div className='dropdown-wrapper'>
         <Select id='area-dropdown' options={this.props.options} 
           placeholder = "SELECT AREA"
+
+          onChange={this.sendAreaData}
   
           styles={{
             control: (baseStyles) => ({

@@ -14,15 +14,21 @@ export default class Menu extends React.Component {
     constructor(){
         super();
         this.state = {
-            mapSelection: ''
+            mapSelection: 'MENU INITIAL',
+            areaSelection: 'MENU INITIAL',
         }
         this.updateMapSelection = this.updateMapSelection.bind(this);
+        this.updateAreaSelection = this.updateAreaSelection.bind(this);
         this.serveAreaOptions = this.serveAreaOptions.bind(this);
         this.sendStartData = this.sendStartData.bind(this);
     }
 
     updateMapSelection = (map) => {
         this.setState({mapSelection: map})
+    };
+
+    updateAreaSelection = (area) => {
+        this.setState({areaSelection: area})
     };
 
     serveAreaOptions = () => {
@@ -38,26 +44,26 @@ export default class Menu extends React.Component {
             case 'BIND':
                 return[]
                 break;
-            case 'BIND':
+            case 'BREEZE':
                 return[]
                 break;
-            case 'BIND':
+            case 'HAVEN':
                 return[]
                 break;
-            case 'BIND':
+            case 'LOTUS':
                 return[]
                 break;
-            case 'BIND':
+            case 'SPLIT':
                 return[]
                 break;
-            case 'BIND':
+            case 'SUNSET':
                 return[]
                 break;
         }
     }
 
-    sendStartData = (e) => {
-        this.props.startSelectionCallBack();
+    sendStartData = () => {
+        this.props.startSelectionCallBack(this.state.mapSelection, this.state.areaSelection);
     }
 
     render() {
@@ -77,7 +83,7 @@ export default class Menu extends React.Component {
                 <div className='landing-menu-wrapper'>
                     <div className='menu-options-wrapper'>
                         <MapDropdown mapSelectionCallBack = {this.updateMapSelection}/>
-                        <AreaDropdown options={this.serveAreaOptions()}/>
+                        <AreaDropdown options={this.serveAreaOptions()} areaSelectionCallBack = {this.updateAreaSelection}/>
                     </div>
                     <a className="start-button">
                         <p className='start-button-text' onClick={this.sendStartData}>START PRACTICE</p>
