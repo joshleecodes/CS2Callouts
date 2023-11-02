@@ -52,82 +52,101 @@ export default class Practice extends React.Component {
     this.state = {
       imageSet: [],
       controlImage: '',
+      currentImage: 'INITIAL',
+      intervalId: null,
    }
+   this.displayControlImage = this.displayControlImage.bind(this);
+  }
+
+  randomizeImage = () => {
+    const { imageSet } = this.state;
+    const randomIndex = Math.floor(Math.random() * imageSet.length);
+    return imageSet[randomIndex];
   }
   
+
+  //server image set dependant on menu options
   componentDidMount(){
     if(this.props.map == 'ASCENT'){
       switch(this.props.area){
         case 'A SITE - DOOR':
-          this.setState({controlImage: aSiteDoorControl})
+          this.setState({controlImage: aSiteDoorControl}, () => {this.displayControlImage()})
           this.setState({imageSet: [aSiteDoorDice, aSiteDoorGen, aSiteDoorMain,
             aSiteDoorNa, aSiteDoorTetris, aSiteDoorWood, aSiteDoorXyp9x, aSiteDoorYoda ]});
           break;
         case 'A SITE - MAIN':
-          this.setState({controlImage: aSiteMainControl})
+          this.setState({controlImage: aSiteMainControl}, () => {this.displayControlImage()})
           this.setState({imageSet: [aSiteMainBricks, aSiteMainDice, aSiteMainGenOne,
             aSiteMainGenTwo, aSiteMainHeaven, aSiteMainNa, aSiteMainWood]});
           break;
         case 'B SITE - ARENA':
-          this.setState({controlImage: bSiteArenaControl})
+          this.setState({controlImage: bSiteArenaControl}, () => {this.displayControlImage()})
           this.setState({imageSet: [bSiteArenaCtOne, bSiteArenaCtTwo, bSiteArenaLane,
             bSiteArenaLogs, bSiteArenaMarket, bSiteArenaStairs, bSiteArenaSwitch]});
           break;
         case 'B SITE - EXECUTE':
-          this.setState({controlImage: bSiteExecuteControl})
+          this.setState({controlImage: bSiteExecuteControl}, () => {this.displayControlImage()})
           this.setState({imageSet: [bSiteExecuteBacksiteOne, bSiteExecuteBacksiteTwo, 
             bSiteExecuteBacksiteThree, bSiteExecuteDefault, bSiteExecuteDragon, bSiteExecuteFish,
             bSiteExecuteSewer, bSiteExecuteStairs, bSiteExecuteZeek]});
           break;
       }
     }
+
+    // Start interval immediately
+    this.startInterval();
+  }; 
+
+  displayControlImage = () => {
+    this.setState({currentImage: this.state.controlImage}, () => {
+      this.pauseInterval();
+    });
   };
+
+  handleClick = () => {
+    this.displayControlImage();
+    this.resumeInterval();
+  }
+
+  startInterval = () => {
+    // Display random image after 3 seconds
+    setTimeout(() => {
+      this.setState({ currentImage: this.randomizeImage() }, () => {
+        this.pauseInterval();
+      });
+    }, 3000);
+
+    // Resume interval after 3 seconds
+    const intervalId = setInterval(() => {
+      this.setState({ currentImage: this.randomizeImage() }, () => {
+        this.pauseInterval();
+      });
+    }, 3000); // Change image after 3 seconds
+
+    this.setState({ intervalId });
+  }
+
+  pauseInterval = () => {
+    clearInterval(this.state.intervalId); // Pause interval
+  }
+
+  resumeInterval = () => {
+    setTimeout(() => {
+      this.startInterval(); // Resume interval after 3 seconds
+    }, 3000);
+  }
 
   render() {
     return(
       <div>
-        <img id='displayImage' src = {this.state.controlImage}/>
+        <img 
+          id='displayImage' 
+          src = {this.state.currentImage}
+          onClick={this.handleClick}   
+        />
         {console.log(this.state.imageSet)}
+        {console.log("Current Image: " + this.state.currentImage)}
       </div>
     )
   }
 }
-
-
-
-
-// const serveImages = () => {
-//   const images = [controlGarden, controlHeaven, controlHell, controlLane, controlSandwich];
-//   const defaultImage = controlDefault;
-//   const [imageSource, setImageSource] = useState(defaultImage);
-//   const [intervalId, setIntervalId] = useState(null);
-
-//   const changeImage = () => {
-//     const randomIndex = random(0, images.length - 1);
-//     const newImageSource = images[randomIndex];
-//     setImageSource(newImageSource);
-//   };
-
-//   const resetToDefault = () => {
-//     setImageSource(defaultImage);
-//   };
-
-//   useEffect(() => {
-//     resetToDefault(); // Call resetToDefault initially
-
-//     const interval = setInterval(() => {
-//       resetToDefault(); // Set default image
-//       setTimeout(changeImage, 1000); // Start changing to random image after 1 second
-//     }, 2500); // Wait for 4 seconds before setting default image
-
-//     setIntervalId(interval);
-
-//     return () => {
-//       clearInterval(interval);
-//     };
-//   }, []); // Empty dependency array
-
-//   return <img src={imageSource} alt="Random Image" />;
-// };
-
-// export default Practice;

@@ -10,7 +10,6 @@ export default class Landing extends React.Component {
         super();
         this.state = {
             showMenu: "true",
-            mapImageSet: [],
             mapSelection: '',
             areaSelection: '',
             countSelection: 0
@@ -27,7 +26,17 @@ export default class Landing extends React.Component {
 
     render() {
         return (
-            this.state.showMenu == "true" ? <Menu startSelectionCallBack = {this.displayController}/> : <Practice map = {this.state.mapSelection} area = {this.state.areaSelection} count = {this.state.countSelection}/>
+            this.state.showMenu == "true" 
+            ? 
+                <Menu 
+                    startSelectionCallBack = {this.displayController}
+                /> 
+            : 
+                <Practice 
+                    map = {this.state.mapSelection} 
+                    area = {this.state.areaSelection}
+                    count = {this.state.countSelection}
+                />
         )    
     }
 }

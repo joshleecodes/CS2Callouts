@@ -1,5 +1,5 @@
 - Implement Image change on click
-    - Start with control Image
+    + Start with control Image
     - show call out image on random interval
     - click to trigger reset to default
     - repeat until count is met
