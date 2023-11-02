@@ -104,26 +104,22 @@ export default class Practice extends React.Component {
   };
 
   handleClick = () => {
-    this.displayControlImage();
-    this.resumeInterval();
+    if(this.state.currentImage != this.state.controlImage){
+      this.displayControlImage();
+      this.resumeInterval();
+    }
   }
 
   startInterval = () => {
-    // Display random image after 3 seconds
+    // Display random image after random time between 1 to 2.5 seconds
+    const randomInterval = Math.floor(Math.random() * (2500 - 1000) + 1000)
+    console.log(randomInterval);
     setTimeout(() => {
       this.setState({ currentImage: this.randomizeImage() }, () => {
         this.pauseInterval();
       });
-    }, 3000);
+    }, randomInterval);
 
-    // Resume interval after 3 seconds
-    const intervalId = setInterval(() => {
-      this.setState({ currentImage: this.randomizeImage() }, () => {
-        this.pauseInterval();
-      });
-    }, 3000); // Change image after 3 seconds
-
-    this.setState({ intervalId });
   }
 
   pauseInterval = () => {
@@ -133,7 +129,7 @@ export default class Practice extends React.Component {
   resumeInterval = () => {
     setTimeout(() => {
       this.startInterval(); // Resume interval after 3 seconds
-    }, 3000);
+    }, 0);
   }
 
   render() {
@@ -144,8 +140,6 @@ export default class Practice extends React.Component {
           src = {this.state.currentImage}
           onClick={this.handleClick}   
         />
-        {console.log(this.state.imageSet)}
-        {console.log("Current Image: " + this.state.currentImage)}
       </div>
     )
   }

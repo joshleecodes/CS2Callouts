@@ -1,7 +1,4 @@
-- Implement Image change on click
-    + Start with control Image
-    - show call out image on random interval
-    - click to trigger reset to default
+- Implement Image change
     - repeat until count is met
     - show practice feedback overlay
 
@@ -10,3 +7,10 @@
     - record feedback data
 
 - Implement Feedback overlay
+
+
+
+
+COMPLETED THIS SESSION: 
+- Only allow onclick to take place if a randomImage is being displayed
+- randomise timer to display random image
