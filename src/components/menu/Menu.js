@@ -40,30 +40,32 @@ export default class Menu extends React.Component {
 
     serveAreaOptions = () => {
         switch(this.state.mapSelection){
-            case 'ASCENT':
+            case 'ANCIENT':
                 return [
-                    { value: 'asite-door', label: 'A SITE - DOOR' },
                     { value: 'asite-main', label: 'A SITE - MAIN' },
                     { value: 'bsite-arena', label: 'B SITE - ARENA' },
                     { value: 'bsite-execute', label: 'B SITE - EXECUTE' },
                 ]
                 break;
-            case 'BIND':
+            case 'ANUBIS':
                 return[]
                 break;
-            case 'BREEZE':
+            case 'DUST 2':
                 return[]
                 break;
-            case 'HAVEN':
+            case 'INFERNO':
                 return[]
                 break;
-            case 'LOTUS':
+            case 'MIRAGE':
                 return[]
                 break;
-            case 'SPLIT':
+            case 'NUKE':
                 return[]
                 break;
-            case 'SUNSET':
+            case 'OVERPASS':
+                return[]
+                break;
+            case 'VERTIGO':
                 return[]
                 break;
         }
