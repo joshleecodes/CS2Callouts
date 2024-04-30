@@ -6,9 +6,8 @@ import AreaDropdown from '../partials/areaDropdown/AreaDropdown';
 import CountDropdown from '../partials/countDropdown/CountDropdown';
 
 //asset imports
-import Background from '../../assets/media/Background.png'
-import Vitality from '../../assets/media/vitality-logo.svg';
-import Valorant from '../../assets/media/valorant-logo.svg';
+import Background from '../../assets/media/background.svg'
+import CSlogo from '../../assets/media/cs-logo.svg';
 
 
 export default class Menu extends React.Component { 
@@ -41,23 +40,22 @@ export default class Menu extends React.Component {
     serveAreaOptions = () => {
         switch(this.state.mapSelection){
             case 'ANCIENT':
-                return [
-                    { value: 'asite-main', label: 'A SITE - MAIN' },
-                    { value: 'bsite-arena', label: 'B SITE - ARENA' },
-                    { value: 'bsite-execute', label: 'B SITE - EXECUTE' },
-                ]
+                return []
                 break;
             case 'ANUBIS':
                 return[]
                 break;
-            case 'DUST 2':
+            case 'DUST2':
                 return[]
                 break;
             case 'INFERNO':
                 return[]
                 break;
             case 'MIRAGE':
-                return[]
+                return[
+                    { value: 'asite-ticket', label: 'A SITE - TICKET' },
+                    { value: 'asite-wood', label: 'A SITE - WOOD' },
+                ]
                 break;
             case 'NUKE':
                 return[]
@@ -81,12 +79,10 @@ export default class Menu extends React.Component {
             <div className='landing-wrapper'>
             <img className='landing-background' src={Background} />
             <div className='logo-wrapper'>
-                    <img className='valorant-logo landing-logo' src={Valorant} />
-                    <img className='vitality-logo landing-logo' src={Vitality} />
+                    <img className='valorant-logo landing-logo' src={CSlogo} />
             </div>
             <div className='landing-content-wrapper'> 
                 <div className='landing-title-wrapper'>
-                    <h2 className='landing-subtitle'>VALORANT // TRAINING_TOOL</h2>
                     <h1 className='landing-title'>CALLOUT PRACTICE</h1>
                 </div>
                 <div className='landing-menu-wrapper'>

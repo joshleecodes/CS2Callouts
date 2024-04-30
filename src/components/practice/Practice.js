@@ -1,49 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { random } from 'lodash';
 
-//---- ASCENT IMAGES ----
-//asite-door
-import aSiteDoorControl from '../../assets/maps/ascent/asite-door/control-img.png';
-import aSiteDoorDice from '../../assets/maps/ascent/asite-door/dice.png';
-import aSiteDoorGen from '../../assets/maps/ascent/asite-door/gen.png';
-import aSiteDoorMain from '../../assets/maps/ascent/asite-door/main.png';
-import aSiteDoorNa from '../../assets/maps/ascent/asite-door/na.png';
-import aSiteDoorTetris from '../../assets/maps/ascent/asite-door/tetris.png';
-import aSiteDoorWood from '../../assets/maps/ascent/asite-door/wood.png';
-import aSiteDoorXyp9x from '../../assets/maps/ascent/asite-door/xyp9x.png';
-import aSiteDoorYoda from '../../assets/maps/ascent/asite-door/yoda.png';
+//---- MIRAGE IMAGES ----
+  //asite-ticket
+  import aSiteTicketControlImage from '../../assets/maps/mirage/asite-ticket/control-image.png';
+  import aSiteTicketBench from '../../assets/maps/mirage/asite-ticket/bench.png';
+  import aSiteTicketConnector from '../../assets/maps/mirage/asite-ticket/connector.png';
+  import aSiteTicketDark1 from '../../assets/maps/mirage/asite-ticket/dark-one.png';
+  import aSiteTicketDark2 from '../../assets/maps/mirage/asite-ticket/dark-two.png';
+  import aSiteTicketDefault from '../../assets/maps/mirage/asite-ticket/default.png';
+  import aSiteTicketFirebox from '../../assets/maps/mirage/asite-ticket/firebox.png';
+  import aSiteTicketNinja from '../../assets/maps/mirage/asite-ticket/ninja.png';
+  import aSiteTicketPalace from '../../assets/maps/mirage/asite-ticket/palace.png';
+  import aSiteTicketRamp from '../../assets/maps/mirage/asite-ticket/ramp.png';
+  import aSiteTicketSandwich from '../../assets/maps/mirage/asite-ticket/sandwich.png';
+  import aSiteTicketStairs from '../../assets/maps/mirage/asite-ticket/stairs.png';
+  import aSiteTicketTetris from '../../assets/maps/mirage/asite-ticket/tetris.png';
+  import aSiteTicketTriple from '../../assets/maps/mirage/asite-ticket/triple.png';
+  import aSiteTicketWood from '../../assets/maps/mirage/asite-ticket/wood.png';
 
-//asite-main
-import aSiteMainControl from '../../assets/maps/ascent/asite-main/control-img.png';
-import aSiteMainBricks from '../../assets/maps/ascent/asite-main/bricks.png';
-import aSiteMainDice from '../../assets/maps/ascent/asite-main/dice.png';
-import aSiteMainGenOne from '../../assets/maps/ascent/asite-main/gen-one.png';
-import aSiteMainGenTwo from '../../assets/maps/ascent/asite-main/gen-two.png';
-import aSiteMainHeaven from '../../assets/maps/ascent/asite-main/heaven.png';
-import aSiteMainNa from '../../assets/maps/ascent/asite-main/na.png';
-import aSiteMainWood from '../../assets/maps/ascent/asite-main/wood.png';
 
-//bsite-arena
-import bSiteArenaControl from '../../assets/maps/ascent/bsite-arena/control-img.png';
-import bSiteArenaCtOne from '../../assets/maps/ascent/bsite-arena/ct-one.png';
-import bSiteArenaCtTwo from '../../assets/maps/ascent/bsite-arena/ct-two.png';
-import bSiteArenaLane from '../../assets/maps/ascent/bsite-arena/lane.png';
-import bSiteArenaLogs from '../../assets/maps/ascent/bsite-arena/logs.png';
-import bSiteArenaMarket from '../../assets/maps/ascent/bsite-arena/market.png';
-import bSiteArenaStairs from '../../assets/maps/ascent/bsite-arena/stairs.png';
-import bSiteArenaSwitch from '../../assets/maps/ascent/bsite-arena/switch.png';
+  //asite-wood
+  import aSiteWoodControl from '../../assets/maps/mirage/asite-wood/control-image.png';
+  import aSiteWoodBench from '../../assets/maps/mirage/asite-wood/bench.png';
+  import aSiteWoodConnector from '../../assets/maps/mirage/asite-wood/connector.png';
+  import aSiteWoodDefault from '../../assets/maps/mirage/asite-wood/default.png';
+  import aSiteWoodFirebox from '../../assets/maps/mirage/asite-wood/firebox.png';
+  import aSiteWoodJungle from '../../assets/maps/mirage/asite-wood/jungle.png';
+  import aSiteWoodNinja from '../../assets/maps/mirage/asite-wood/ninja.png';
+  import aSiteWoodSandwich from '../../assets/maps/mirage/asite-wood/sandwich.png';
+  import aSiteWoodStairs from '../../assets/maps/mirage/asite-wood/stairs.png';
+  import aSiteWoodTicket from '../../assets/maps/mirage/asite-wood/ticket.png';
+  import aSiteWoodTrash from '../../assets/maps/mirage/asite-wood/trash.png';
+  import aSiteWoodTriple from '../../assets/maps/mirage/asite-wood/triple.png';
 
-//bsite-execute
-import bSiteExecuteControl from '../../assets/maps/ascent/bsite-execute/control-img.png';
-import bSiteExecuteBacksiteOne from '../../assets/maps/ascent/bsite-execute/backsite-one.png';
-import bSiteExecuteBacksiteTwo from '../../assets/maps/ascent/bsite-execute/backsite-two.png';
-import bSiteExecuteBacksiteThree from '../../assets/maps/ascent/bsite-execute/backsite-three.png';
-import bSiteExecuteDefault from '../../assets/maps/ascent/bsite-execute/default.png';
-import bSiteExecuteDragon from '../../assets/maps/ascent/bsite-execute/dragon.png';
-import bSiteExecuteFish from '../../assets/maps/ascent/bsite-execute/fish.png';
-import bSiteExecuteSewer from '../../assets/maps/ascent/bsite-execute/sewer.png';
-import bSiteExecuteStairs from '../../assets/maps/ascent/bsite-execute/stairs.png';
-import bSiteExecuteZeek from '../../assets/maps/ascent/bsite-execute/zeek.png';
 
 
 export default class Practice extends React.Component {
@@ -67,28 +57,26 @@ export default class Practice extends React.Component {
 
   //server image set dependant on menu options
   componentDidMount(){
-    if(this.props.map == 'ASCENT'){
+    if(this.props.map == 'MIRAGE'){
       switch(this.props.area){
-        case 'A SITE - DOOR':
-          this.setState({controlImage: aSiteDoorControl}, () => {this.displayControlImage()})
-          this.setState({imageSet: [aSiteDoorDice, aSiteDoorGen, aSiteDoorMain,
-            aSiteDoorNa, aSiteDoorTetris, aSiteDoorWood, aSiteDoorXyp9x, aSiteDoorYoda ]});
+        case 'A SITE - TICKET':
+          this.setState({controlImage: aSiteTicketControlImage}, () => {this.displayControlImage()})
+          this.setState({
+            imageSet: [aSiteTicketBench, aSiteTicketConnector, aSiteTicketDark1,
+              aSiteTicketDark2, aSiteTicketDefault, aSiteTicketFirebox, aSiteTicketNinja, aSiteTicketPalace,
+              aSiteTicketRamp, aSiteTicketSandwich, aSiteTicketStairs, aSiteTicketTetris, aSiteTicketTriple,
+              aSiteTicketWood
+            ]
+          });
           break;
-        case 'A SITE - MAIN':
-          this.setState({controlImage: aSiteMainControl}, () => {this.displayControlImage()})
-          this.setState({imageSet: [aSiteMainBricks, aSiteMainDice, aSiteMainGenOne,
-            aSiteMainGenTwo, aSiteMainHeaven, aSiteMainNa, aSiteMainWood]});
-          break;
-        case 'B SITE - ARENA':
-          this.setState({controlImage: bSiteArenaControl}, () => {this.displayControlImage()})
-          this.setState({imageSet: [bSiteArenaCtOne, bSiteArenaCtTwo, bSiteArenaLane,
-            bSiteArenaLogs, bSiteArenaMarket, bSiteArenaStairs, bSiteArenaSwitch]});
-          break;
-        case 'B SITE - EXECUTE':
-          this.setState({controlImage: bSiteExecuteControl}, () => {this.displayControlImage()})
-          this.setState({imageSet: [bSiteExecuteBacksiteOne, bSiteExecuteBacksiteTwo, 
-            bSiteExecuteBacksiteThree, bSiteExecuteDefault, bSiteExecuteDragon, bSiteExecuteFish,
-            bSiteExecuteSewer, bSiteExecuteStairs, bSiteExecuteZeek]});
+        case 'A SITE - WOOD':
+          this.setState({controlImage: aSiteWoodControl}, () => {this.displayControlImage()})
+          this.setState({
+            imageSet: [aSiteWoodBench, aSiteWoodConnector, aSiteWoodDefault, aSiteWoodFirebox,
+              aSiteWoodJungle, aSiteWoodNinja, aSiteWoodSandwich, aSiteWoodStairs, aSiteWoodTicket,
+              aSiteWoodTrash, aSiteWoodTriple
+            ]
+          });
           break;
       }
     }

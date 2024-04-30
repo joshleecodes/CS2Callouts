@@ -32,13 +32,13 @@ export default class AreaDropdownMenu extends React.Component {
             dropdownIndicator: (provided) => ({
               ...provided,
               "svg": {
-                fill: "#FF4655"
+                fill: "#F1910B"
               }
             }),
             option: (provided, state) => ({
               ...provided,
-              backgroundColor: state.isSelected ? "#FF4655" : "#ECE8E1",
-              borderColor: "#ECE8E1"
+              backgroundColor: state.isSelected ? "#F1910B" : "#ECE8E1",
+              borderColor: "#F1910B"
             }),
             menuList:(provided) => ({
               ...provided,

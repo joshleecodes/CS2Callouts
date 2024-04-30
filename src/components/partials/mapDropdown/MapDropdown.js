@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Select from 'react-select'
 
 const options = [
-  { value: 'Ascent', label: 'ASCENT' },
-  { value: 'Bind', label: 'BIND' },
-  { value: 'Breeze', label: 'BREEZE' },
-  { value: 'Haven', label: 'HAVEN' },
-  { value: 'Lotus', label: 'LOTUS' },
-  { value: 'Split', label: 'SPLIT' },
-  { value: 'Sunset', label: 'SUNSET' },
+  { value: 'Ancient', label: 'ANCIENT' },
+  { value: 'Anubis', label: 'ANUBIS' },
+  { value: 'Dust2', label: 'DUST2' },
+  { value: 'Inferno', label: 'INFERNO' },
+  { value: 'Mirage', label: 'MIRAGE' },
+  { value: 'Nuke', label: 'NUKE' },
+  { value: 'Overpass', label: 'OVERPASS' },
+  { value: 'Vertigo', label: 'VERTIGO' },
 ]
 
   export default class MapDropdown extends React.Component {
@@ -40,12 +41,12 @@ const options = [
             dropdownIndicator: (provided) => ({
               ...provided,
               "svg": {
-                fill: "#FF4655"
+                fill: "#F1910B"
               }
             }),
             option: (provided, state) => ({
               ...provided,
-              backgroundColor: state.isSelected ? "#FF4655" : "#ECE8E1",
+              backgroundColor: state.isSelected ? "#F1910B" : "#ECE8E1",
               borderColor: "#ECE8E1"
           }),
             menuList:(provided) => ({
