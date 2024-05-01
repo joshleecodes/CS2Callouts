@@ -4,7 +4,7 @@ import './index.scss';
 
 
 //component imports
-import Landing from './components/landing/Landing';
+import Landing from './components/landing/Landing.tsx';
 
 //font imports
 import "@fontsource/lato/900.css";
