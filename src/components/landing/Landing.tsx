@@ -1,7 +1,11 @@
 import React, { useState, useEffect} from 'react';
 
+//Utility Imports
+import { serveImageSet } from '../../util/ImageSetHandler.tsx';
+
+//Component Imports
 import Menu from '../menu/Menu.tsx';
-import Practice from '../practice/Practice';
+import Practice from '../practice/Practice.tsx';
 
 
 const Landing = () => {
@@ -14,19 +18,19 @@ const Landing = () => {
         setCountSelection(Number(count));
     }
 
-    const serveImageSet = () => {
-        //console.log(ImageSets[mapSelection]);
+    const getImageSet = () => {
+        console.log(serveImageSet(mapSelection, areaSelection));
     }
 
     const startPractice = () => {
-        setShowMenu(false);
         console.log(mapSelection, areaSelection, countSelection);
-        serveImageSet();
+        getImageSet();
+        setShowMenu(false);
     }
 
     return (
-        // showMenu === true 
-        // ?
+        showMenu === true 
+        ?
         <Menu
             mapSelection = {mapSelection}
             setMapSelection = {setMapSelection}
@@ -34,12 +38,12 @@ const Landing = () => {
             updateCountSelection = {updateCountSelection}
             startPractice = {startPractice}
         />
-        // :
-        //     <Practice 
-        //         mapSelection = {mapSelection} 
-        //         areaSelection = {areaSelection}
-        //         countSelection = {countSelection}
-        //     />
+        :
+            <Practice 
+                controlImage = {serveImageSet(mapSelection, areaSelection)?.controlImage} 
+                imageSet = {serveImageSet(mapSelection, areaSelection)?.imageSet}
+                countSelection = {countSelection}
+            />
     )
 }
 

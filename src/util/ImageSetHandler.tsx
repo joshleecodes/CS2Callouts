@@ -32,36 +32,30 @@
   import aSiteWoodTriple from '../assets/maps/mirage/asite-wood/triple.png';
 
 
-  const ImageSetHandler = () => {
-    let controlImage: string;
-    let imageSet: string[];
 
-    const getControlImage = () => {
-        return controlImage;
-    }
-
-    const getImageSet = () => {
-        return imageSet;
-    }
-
-    const serveImageSet = (map: string, area: string) => {
-        if(map == 'MIRAGE'){
-            switch(area){
-              case 'A SITE - TICKET':
-                controlImage = aSiteTicketControlImage;               
-                imageSet = [ aSiteTicketBench, aSiteTicketConnector, aSiteTicketDark1, aSiteTicketDark2, aSiteTicketDefault, aSiteTicketFirebox, aSiteTicketNinja,
-                    aSiteTicketPalace, aSiteTicketRamp, aSiteTicketSandwich, aSiteTicketStairs, aSiteTicketTetris, aSiteTicketTriple, aSiteTicketWood ]
-                break;
-              case 'A SITE - WOOD':
-                controlImage = aSiteWoodControl;
-                imageSet = [ aSiteWoodBench, aSiteWoodConnector, aSiteWoodDefault, aSiteWoodFirebox, aSiteWoodJungle, aSiteWoodNinja, aSiteWoodSandwich,
-                    aSiteWoodStairs, aSiteWoodTicket, aSiteWoodTrash, aSiteWoodTriple ]
-                break;
-            }
-        //add new else if and switch statement here for next map
-        }
+export const serveImageSet = (map: string, area: string) => {
+    let imageSetObject = {
+        controlImage: 'no control image',
+        imageSet: ['']
     }
     
+    if(map == 'MIRAGE'){
+        switch(area){
+            case 'A SITE - TICKET':  
+                imageSetObject.controlImage = aSiteTicketControlImage;               
+                imageSetObject.imageSet = [ aSiteTicketBench, aSiteTicketConnector, aSiteTicketDark1, aSiteTicketDark2, aSiteTicketDefault, aSiteTicketFirebox, aSiteTicketNinja,
+                            aSiteTicketPalace, aSiteTicketRamp, aSiteTicketSandwich, aSiteTicketStairs, aSiteTicketTetris, aSiteTicketTriple, aSiteTicketWood ];
+            break;
+            case 'A SITE - WOOD':
+                imageSetObject.controlImage = aSiteWoodControl;
+                imageSetObject.imageSet = [ aSiteWoodBench, aSiteWoodConnector, aSiteWoodDefault, aSiteWoodFirebox, aSiteWoodJungle, aSiteWoodNinja, aSiteWoodSandwich,
+                    aSiteWoodStairs, aSiteWoodTicket, aSiteWoodTrash, aSiteWoodTriple ];
+            break;
+        } 
+        
+    //add new else if and switch statement here for next map
+    }
+
+    return imageSetObject;
 }
 
-export default ImageSetHandler;

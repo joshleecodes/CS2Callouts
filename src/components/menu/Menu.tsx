@@ -89,7 +89,6 @@ const Menu = ({
         </div>
         <div className='landing-content-wrapper'> 
             <div className='landing-title-wrapper'>
-                <h2 className='landing-subtitle'>VALORANT // TRAINING_TOOL</h2>
                 <h1 className='landing-title'>CALLOUT PRACTICE</h1>
             </div>
             <div className='landing-menu-wrapper'>
