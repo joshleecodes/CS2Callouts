@@ -15,6 +15,8 @@ const Practice = ({
   const [counter, setCounter] = useState(0);
   const [currentImage, setCurrentImage] = useState(controlImage);
   const [timeoutId, setTimeoutId] = useState(0);
+  const [startTime, setStartTime] = useState(Number);
+  const [performanceData, setPorformanceData] = useState([Object]);
 
   const randomTimeout = () => {
     return Math.floor(Math.random() * (2500 - 1000) + 1000); // Random timeout between 1 to 2.5 seconds
@@ -30,6 +32,7 @@ const Practice = ({
     setCurrentImage(controlImage);
     setTimeout(() => {
       setCurrentImage(getRandomImage());
+      setStartTime(performance.now());
     }, randomTimeout());
   
   };
@@ -37,11 +40,14 @@ const Practice = ({
   useEffect(() => {
     if (counter < countSelection) {
       handleImageChange();
-    } else console.log('counter reached, show stats');
+    } else console.log(performanceData);
   }, [counter]);
 
   const handleClick = () => {
     if (currentImage !== controlImage) {
+      if ((currentImage.indexOf('-') === -1)) {
+        setPorformanceData([...performanceData, { image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf(".")), time: performance.now() - startTime}]);
+      } else setPorformanceData([...performanceData, { image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf("-")), time: performance.now() - startTime}]);
       setCounter(counter + 1);
       console.log(counter);
     }
