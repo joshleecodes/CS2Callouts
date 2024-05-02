@@ -1,5 +1,4 @@
 import React, { useState, useEffect} from 'react';
-//import { random } from 'lodash';
 
 interface PracticeProps {
   controlImage: string;
@@ -18,10 +17,14 @@ const Practice = ({
   const [startTime, setStartTime] = useState(Number);
   const [performanceData, setPorformanceData] = useState([Object]);
 
+
+
+  // Returns random number for timeout between 1 to 2.5 seconds
   const randomTimeout = () => {
-    return Math.floor(Math.random() * (2500 - 1000) + 1000); // Random timeout between 1 to 2.5 seconds
+    return Math.floor(Math.random() * (2500 - 1000) + 1000);
   };
 
+  //returns a random image from the image set
   const getRandomImage = () => {
     const randomIndex = Math.floor(Math.random() * imageSet.length);
     return imageSet[randomIndex];
@@ -34,7 +37,6 @@ const Practice = ({
       setCurrentImage(getRandomImage());
       setStartTime(performance.now());
     }, randomTimeout());
-  
   };
 
   useEffect(() => {
@@ -43,13 +45,57 @@ const Practice = ({
     } else console.log(performanceData);
   }, [counter]);
 
+  const SpeechRecognition = (window as any).webkitSpeechRecognition;
+  const SpeechGrammarList  = (window as any).webkitSpeechGrammarList ;
+  // const SpeechRecognitionEvent = (window as any).webkitSpeechRecognitionEvent;
+  if (!SpeechRecognition) {
+    console.error('SpeechRecognition API not supported.');
+    return;
+  }
+
+  const recognition = new SpeechRecognition();
+
+
+  let calloutList = [''];
+  imageSet.forEach((image) => {
+    if ((currentImage.indexOf('-') === -1)) {
+      calloutList = ([...calloutList, image.substring(image.lastIndexOf("/") + 1, currentImage.indexOf("."))]);
+    } else calloutList = ([...calloutList, image.substring(image.lastIndexOf("/") + 1, currentImage.indexOf("-"))]);
+  });
+
+  const grammar = `#JSGF V1.0; grammar colors; public <color> = ${calloutList.join(
+    " | ",
+  )};`;
+
+  const speechRecognitionList = new SpeechGrammarList();
+  speechRecognitionList.addFromString(grammar, 0);
+
   const handleClick = () => {
     if (currentImage !== controlImage) {
-      if ((currentImage.indexOf('-') === -1)) {
-        setPorformanceData([...performanceData, { image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf(".")), time: performance.now() - startTime}]);
-      } else setPorformanceData([...performanceData, { image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf("-")), time: performance.now() - startTime}]);
-      setCounter(counter + 1);
-      console.log(counter);
+      recognition.start();
+
+      recognition.onspeechend = () => {
+        recognition.stop();
+      };
+
+      recognition.onresult = (event) => {
+        
+        const lastResultIndex = event.results.length - 1;
+        const spokenText = event.results[lastResultIndex][0].transcript.trim().toLowerCase();
+        console.log(spokenText);
+  
+        setCounter(counter +1);
+        if ((currentImage.indexOf('-') === -1)) {
+          setPorformanceData([...performanceData, { id: counter, image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf(".")), callout: spokenText, time: performance.now() - startTime}]);
+        } else setPorformanceData([...performanceData, { id: counter, image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf("-")), callout: spokenText, time: performance.now() - startTime}]);
+        setCounter(counter + 1);
+        console.log('COUNT: ' + counter);
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+      };
+      
     }
   };
 

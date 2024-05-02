@@ -18,13 +18,8 @@ const Landing = () => {
         setCountSelection(Number(count));
     }
 
-    const getImageSet = () => {
-        console.log(serveImageSet(mapSelection, areaSelection));
-    }
-
     const startPractice = () => {
         console.log(mapSelection, areaSelection, countSelection);
-        getImageSet();
         setShowMenu(false);
     }
 
