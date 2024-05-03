@@ -12,7 +12,7 @@ interface MenuProps {
     setMapSelection: (map: string) => void;
     setAreaSelection: (area: string) => void;
     updateCountSelection: (count: string) => void;
-    startPractice: () => void;
+    startPractice: (section: string) => void;
 }
 
 const Menu = ({ 
@@ -98,7 +98,7 @@ const Menu = ({
                     <MenuDropdown options={serveCountOptions()} updateSelection = {updateCountSelection}/>
                 </div>
                 <a className="start-button">
-                    <p className='start-button-text' onClick={() => startPractice()}>START PRACTICE</p>
+                    <p className='start-button-text' onClick={() => startPractice('practice')}>START PRACTICE</p>
                 </a>
             </div>
         </div>

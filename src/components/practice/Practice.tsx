@@ -4,18 +4,20 @@ interface PracticeProps {
   controlImage: string;
   imageSet: string[];
   countSelection: number;
+  startFeedback: (section: string, data: object[]) => void;
 }
 
 const Practice = ({
   controlImage,
   imageSet,
-  countSelection
+  countSelection,
+  startFeedback
 }: PracticeProps) => {
   const [counter, setCounter] = useState(0);
   const [currentImage, setCurrentImage] = useState(controlImage);
   const [timeoutId, setTimeoutId] = useState(0);
   const [startTime, setStartTime] = useState(Number);
-  const [performanceData, setPorformanceData] = useState([Object]);
+  const [performanceData, setPorformanceData] = useState([]);
 
 
 
@@ -42,7 +44,9 @@ const Practice = ({
   useEffect(() => {
     if (counter < countSelection) {
       handleImageChange();
-    } else console.log(performanceData);
+    } else {
+      startFeedback('feedback', performanceData);
+    }
   }, [counter]);
 
   const SpeechRecognition = (window as any).webkitSpeechRecognition;
