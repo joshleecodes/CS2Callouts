@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react';
 
+import Background from '../../assets/media/background-blue.svg';
+
 interface FeedbackProps {
     feedbackData: object[];
 }
@@ -65,11 +67,49 @@ const Feedback = ({
         console.log('worst accurate: ' + worstCallout + worstAccuracy);
     }
 
+    const serveResultsList = () => {
+        return results.map((result, index) => (
+            <div key={index} className='result-wrapper'>
+                <div className='result-data'>{result.calloutName}</div>
+                <div className='result-data'>{result.calloutAttempts}</div>
+                <div className='result-data'>{result.calloutTrue}</div>
+                <div className='result-data'>{result.calloutFalse}</div>
+                <div className='result-data'>{result.calloutAverageTime}</div>
+            </div>
+        ));
+    };
+    
+    
+
+    proccessData();
     return (
-        <div onClick={proccessData}>
-            feedbackstats
+        <div className='feedback-wrapper'>
+            <img className='feedback-background' src={Background} />
+            <div className='feedback-content'>
+                <div className='featured-wrapper'>
+                    <div className='average-time-wrapper'>
+                        <h2>Average Time: {averageTime}</h2>
+                    </div>
+                    <div className='average-time-wrapper'>
+                        <h2>Best Callout: {bestCallout}</h2>
+                    </div>
+                    <div className='average-time-wrapper'>
+                        <h2>Worst Callout: {worstCallout}</h2>
+                    </div>
+                </div>
+                <div className='feedback-list'>
+                    <div className='result-wrapper'>
+                        <div className='result-data'>Callout Name:</div>
+                        <div className='result-data'>Attempts:</div>
+                        <div className='result-data'>True:</div>
+                        <div className='result-data'>False:</div>
+                        <div className='result-data'>Average Time:</div>
+                    </div>
+                    {serveResultsList()}
+                </div>
+            </div>
         </div>
     );
-}
+};
 
 export default Feedback;

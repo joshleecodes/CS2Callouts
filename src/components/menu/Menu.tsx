@@ -83,26 +83,26 @@ const Menu = ({
     
     return(
         <div className='landing-wrapper'>
-        <img className='landing-background' src={Background} />
-        <div className='logo-wrapper'>
-                <img className='landing-logo' src={CSlogo} />
-        </div>
-        <div className='landing-content-wrapper'> 
-            <div className='landing-title-wrapper'>
-                <h1 className='landing-title'>CALLOUT PRACTICE</h1>
+            <img className='landing-background' src={Background} />
+            <div className='logo-wrapper'>
+                    <img className='landing-logo' src={CSlogo} />
             </div>
-            <div className='landing-menu-wrapper'>
-                <div className='menu-options-wrapper'>
-                    <MenuDropdown options={serveMapOptions()} updateSelection = {setMapSelection}/>
-                    <MenuDropdown options={serveAreaOptions()} updateSelection = {setAreaSelection}/>
-                    <MenuDropdown options={serveCountOptions()} updateSelection = {updateCountSelection}/>
+            <div className='landing-content-wrapper'> 
+                <div className='landing-title-wrapper'>
+                    <h1 className='landing-title'>CALLOUT PRACTICE</h1>
                 </div>
-                <a className="start-button">
-                    <p className='start-button-text' onClick={() => startPractice('practice')}>START PRACTICE</p>
-                </a>
+                <div className='landing-menu-wrapper'>
+                    <div className='menu-options-wrapper'>
+                        <MenuDropdown options={serveMapOptions()} updateSelection = {setMapSelection}/>
+                        <MenuDropdown options={serveAreaOptions()} updateSelection = {setAreaSelection}/>
+                        <MenuDropdown options={serveCountOptions()} updateSelection = {updateCountSelection}/>
+                    </div>
+                    <a className="start-button">
+                        <p className='start-button-text' onClick={() => startPractice('practice')}>START PRACTICE</p>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
     )
 }
 

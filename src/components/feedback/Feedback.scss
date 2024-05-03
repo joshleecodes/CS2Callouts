@@ -1,0 +1,53 @@
+.feedback-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-background {
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    display: flex;
+}
+
+.feedback-content {
+    display: flex;
+    flex-direction: column;
+    background-color: $light-blue;
+    width: 65vw;
+    height: 80vh;
+}
+
+.featured-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 2vh;
+    border-bottom: 2vh solid $light-blue;
+}
+
+.average-time-wrapper, .best-callout-wrapper, .worst-callout-wrapper {
+    background-color: $dark-blue;
+    width: 20vw;
+    height: 10vh;
+}
+
+.feedback-list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    overflow-y:auto;
+    margin: 0 0.9vw;
+}
+
+.result-wrapper {
+    display: flex;
+}
+
+.result-data {
+    width: 20%
+}
