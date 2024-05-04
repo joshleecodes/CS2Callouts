@@ -74,13 +74,12 @@ const Feedback = ({
                 <div className='result-data'>{result.calloutAttempts}</div>
                 <div className='result-data'>{result.calloutTrue}</div>
                 <div className='result-data'>{result.calloutFalse}</div>
-                <div className='result-data'>{result.calloutAverageTime}</div>
+                <div className='result-data'>{result.calloutAverageTime}&#40;MS&#41;</div>
             </div>
         ));
     };
     
     
-
     proccessData();
     return (
         <div className='feedback-wrapper'>
@@ -88,22 +87,25 @@ const Feedback = ({
             <div className='feedback-content'>
                 <div className='featured-wrapper'>
                     <div className='average-time-wrapper'>
-                        <h2>Average Time: {averageTime}</h2>
+                        <div className='featured-title'>Average Time</div>
+                        <div className='featured-data'>{averageTime}&#40;MS&#41;</div>
                     </div>
                     <div className='average-time-wrapper'>
-                        <h2>Best Callout: {bestCallout}</h2>
+                        <div className='featured-title'>Best Callout</div>
+                        <div className='featured-data'>{bestCallout}</div>
                     </div>
                     <div className='average-time-wrapper'>
-                        <h2>Worst Callout: {worstCallout}</h2>
+                        <div className='featured-title'>Worst Callout</div>
+                        <div className='featured-data'>{worstCallout}</div>
                     </div>
                 </div>
                 <div className='feedback-list'>
                     <div className='result-wrapper'>
-                        <div className='result-data'>Callout Name:</div>
-                        <div className='result-data'>Attempts:</div>
-                        <div className='result-data'>True:</div>
-                        <div className='result-data'>False:</div>
-                        <div className='result-data'>Average Time:</div>
+                        <div className='result-data result-title'>Callout Name:</div>
+                        <div className='result-data result-title'>Attempts:</div>
+                        <div className='result-data result-title'>Correct:</div>
+                        <div className='result-data result-title'>Incorrect:</div>
+                        <div className='result-data result-title'>Average Time:</div>
                     </div>
                     {serveResultsList()}
                 </div>

@@ -90,8 +90,8 @@ const Practice = ({
   
         setCounter(counter +1);
         if ((currentImage.indexOf('-') === -1)) {
-          setPorformanceData([...performanceData, { id: counter, image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf(".")), callout: spokenText, time: performance.now() - startTime}]);
-        } else setPorformanceData([...performanceData, { id: counter, image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf("-")), callout: spokenText, time: performance.now() - startTime}]);
+          setPorformanceData([...performanceData, { id: counter, image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf(".")), callout: spokenText, time: Math.floor(performance.now() - startTime)}]);
+        } else setPorformanceData([...performanceData, { id: counter, image: currentImage.substring(currentImage.lastIndexOf("/") + 1, currentImage.indexOf("-")), callout: spokenText, time: Math.floor(performance.now() - startTime)}]);
         setCounter(counter + 1);
         console.log('COUNT: ' + counter);
       };
