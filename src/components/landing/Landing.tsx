@@ -24,7 +24,7 @@ const Landing = () => {
         setFeedbackData(feedbackData);
         setDisplaySection('feedback');
     }
-
+    
     const serveSection = () => {
         if(displaySection === 'menu'){
             return (

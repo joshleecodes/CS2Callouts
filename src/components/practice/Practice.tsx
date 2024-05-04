@@ -32,6 +32,7 @@ const Practice = ({
     return imageSet[randomIndex];
   };
 
+  //Changes image to control Image and sets/resets random timer for callout image
   const handleImageChange = () => {
     clearTimeout(timeoutId);
     setCurrentImage(controlImage);
@@ -41,6 +42,7 @@ const Practice = ({
     }, randomTimeout());
   };
 
+  //When counter changes, calls handleImage or if count is reached, passes data back to landing.
   useEffect(() => {
     if (counter < countSelection) {
       handleImageChange();
@@ -49,31 +51,29 @@ const Practice = ({
     }
   }, [counter]);
 
+  //Speech recognition set up
   const SpeechRecognition = (window as any).webkitSpeechRecognition;
   const SpeechGrammarList  = (window as any).webkitSpeechGrammarList ;
-  // const SpeechRecognitionEvent = (window as any).webkitSpeechRecognitionEvent;
   if (!SpeechRecognition) {
     console.error('SpeechRecognition API not supported.');
     return;
   }
-
   const recognition = new SpeechRecognition();
 
-
+  //Sets calloutList of grammar for speech recgonition
   let calloutList = [''];
   imageSet.forEach((image) => {
     if ((currentImage.indexOf('-') === -1)) {
       calloutList = ([...calloutList, image.substring(image.lastIndexOf("/") + 1, currentImage.indexOf("."))]);
     } else calloutList = ([...calloutList, image.substring(image.lastIndexOf("/") + 1, currentImage.indexOf("-"))]);
   });
-
   const grammar = `#JSGF V1.0; grammar colors; public <color> = ${calloutList.join(
     " | ",
   )};`;
-
   const speechRecognitionList = new SpeechGrammarList();
   speechRecognitionList.addFromString(grammar, 0);
 
+  //On click starts to record user speech, on result processes data and changes count
   const handleClick = () => {
     if (currentImage !== controlImage) {
       recognition.start();

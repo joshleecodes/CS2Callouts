@@ -10,16 +10,16 @@ const Feedback = ({
     feedbackData
 }: FeedbackProps) => {
 
-    let results = [];
+    let results = []; 
     let calloutsFound = [];
 
     let averageTime = 0;
-
     let bestAccuracy = -1;
     let bestCallout = '';
     let worstAccuracy = 101;
     let worstCallout = '';
 
+    //Loops through data passed as prop, stores and finds key takeaways to display for user
     const proccessData = () => {
         console.log(feedbackData);
         feedbackData.map((callout) => {
@@ -61,12 +61,9 @@ const Feedback = ({
                 worstCallout = result.calloutName;
             }
         })
-
-        console.log('average time: ' + averageTime);
-        console.log('best accurate: ' + bestCallout + bestAccuracy);
-        console.log('worst accurate: ' + worstCallout + worstAccuracy);
     }
 
+    //Serves list displaying all results after data is processed
     const serveResultsList = () => {
         return results.map((result, index) => (
             <div key={index} className='result-wrapper'>
@@ -79,8 +76,8 @@ const Feedback = ({
         ));
     };
     
-    
     proccessData();
+    
     return (
         <div className='feedback-wrapper'>
             <img className='feedback-background' src={Background} />
