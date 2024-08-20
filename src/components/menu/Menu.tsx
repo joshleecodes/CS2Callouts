@@ -27,13 +27,8 @@ const Menu = ({
     //List of maps options
     const serveMapOptions = () => {
         return [
-            { value: 'Ancient', label: 'ANCIENT' },
-            { value: 'Anubis', label: 'ANUBIS' },
-            { value: 'Dust2', label: 'DUST2' },
-            { value: 'Inferno', label: 'INFERNO' },
             { value: 'Mirage', label: 'MIRAGE' },
             { value: 'Nuke', label: 'NUKE' },
-            { value: 'Overpass', label: 'OVERPASS' },
             { value: 'Vertigo', label: 'VERTIGO' },
           ]
     }
@@ -41,32 +36,26 @@ const Menu = ({
     //Serve area options for selected map
     const serveAreaOptions = () => {
         switch(mapSelection){
-            case 'ANCIENT':
-                return []
-                break;
-            case 'ANUBIS':
-                return[]
-                break;
-            case 'DUST2':
-                return[]
-                break;
-            case 'INFERNO':
-                return[]
-                break;
             case 'MIRAGE':
                 return[
                     { value: 'asite-ticket', label: 'A SITE - TICKET' },
                     { value: 'asite-wood', label: 'A SITE - WOOD' },
+                    { value: 'bsite-van', label: 'B SITE - VAN' },
+                    { value: 'mid-window', label: 'MID - WINDOW' },
                 ]
                 break;
             case 'NUKE':
-                return[]
-                break;
-            case 'OVERPASS':
-                return[]
+                return[
+                    { value: 'asite-heaven', label: 'A SITE - HEAVEN' },
+                    { value: 'bsite-ramp', label: 'B SITE - RAMP' },
+                    { value: 'outside', label: 'OUTSIDE' },
+                ]
                 break;
             case 'VERTIGO':
-                return[]
+                return[
+                    { value: 'asite', label: 'A SITE' },
+                    { value: 'bsite', label: 'B SITE' },
+                ]
                 break;
             default:
             return [{ value: 'select a map', label: 'NO MAP SELECTED' }]
